@@ -25,7 +25,8 @@ public class Product {
   @GeneratedValue( strategy= GenerationType.IDENTITY)
   Long id;
   String name;
+  Double price;
   @OneToMany
-  List<StoreStock> storeStock;
+  List<StoreStock> stockByStore;
 
 }

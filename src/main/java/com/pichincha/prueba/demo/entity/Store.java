@@ -28,7 +28,7 @@ public class Store {
   String category;
   String owner;
   @OneToMany
-  List<StoreStock> storeStockList;
+  List<StoreStock> products;
 
 
 }

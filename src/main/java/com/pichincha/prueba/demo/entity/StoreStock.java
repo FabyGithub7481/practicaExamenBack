@@ -23,7 +23,7 @@ public class StoreStock {
   @Id
   @GeneratedValue( strategy= GenerationType.IDENTITY)
   Long id;
-  Double price;
+  Double soldPrice;
   @ManyToOne
   Product product;
   @ManyToOne

@@ -15,11 +15,14 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = PRIVATE)
 @Entity
 public class OrderDetail {
-
+  @Id
+  @GeneratedValue( strategy= GenerationType.IDENTITY)
   Long id;
   @ManyToOne
   Product product;
+  @ManyToOne
   Order order;
   Integer totalOrdered;
   Double priceUnit;
+  Double priceTotal;
 }

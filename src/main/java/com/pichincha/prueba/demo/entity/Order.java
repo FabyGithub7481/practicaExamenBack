@@ -24,7 +24,7 @@ public class Order {
   Long id;
   Date dateOrdered;
   @OneToMany
-  List<OrderDetail> orderDetailList;
+  List<OrderDetail> details;
   @ManyToOne
   User user;
 
