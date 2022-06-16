@@ -2,10 +2,13 @@ package com.pichincha.prueba.demo.entity;
 
 import static lombok.AccessLevel.PRIVATE;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,12 +24,19 @@ import lombok.experimental.FieldDefaults;
 @Entity
 public class StoreStock {
   @Id
-  @GeneratedValue( strategy= GenerationType.IDENTITY)
-  Long id;
-  Double soldPrice;
-  @ManyToOne
-  Product product;
-  @ManyToOne
-  Store store;
-  Integer stock;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "store_stock_id")
+  private Long id;
+
+  private Double soldPrice;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "product_id", nullable = false)
+  private Product productOwner;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "store_id", nullable = false)
+  private Store storeOwner;
+
+  private Integer stock;
 }

@@ -1,12 +1,9 @@
-package com.pichincha.prueba.demo.entity;
+package com.pichincha.prueba.demo.dto;
 
 import static lombok.AccessLevel.PRIVATE;
 
 import java.util.Date;
 import java.util.List;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,14 +15,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = PRIVATE)
-public class Order {
-  @Id
-  @GeneratedValue( strategy= GenerationType.IDENTITY)
+public class UserStoreDto {
+
   Long id;
-  Date dateOrdered;
-  @OneToMany
-  List<OrderDetail> details;
-  @ManyToOne
-  User user;
+  String userName;
+  Date createdDate;
+
+  List<ProductOrderDto> requestOrders;
 
 }

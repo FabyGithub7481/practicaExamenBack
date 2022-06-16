@@ -2,15 +2,14 @@ package com.pichincha.prueba.demo.entity;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,18 +22,22 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = PRIVATE)
 @Entity
-public class Store {
+public class DetailOrder {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "store_id")
+  @Column(name = "order_detail_id")
   Long id;
-  String name;
-  String category;
-  String owner;
 
-  @OneToMany(mappedBy = "storeOwner", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-  List<StoreStock> products;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "product_id", nullable = false)
+  ProductOrder productOrderOwner;
 
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "order_id", nullable = false)
+  ProductOrder orderOwner;
 
+  Integer totalOdered;
+  Double priceUnit;
+  Double priceTotal;
 }

@@ -1,12 +1,9 @@
 package com.pichincha.prueba.demo.entity;
-
+import java.util.List;
+import javax.persistence.*;
 import static lombok.AccessLevel.PRIVATE;
 
 import java.util.Date;
-import java.util.List;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,14 +16,15 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = PRIVATE)
 @Entity
-public class Product {
+public class UserStore {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "product_id")
+  @Column(name = "user_id")
   private Long id;
-  private String name;
-  private Double price;
-  @OneToMany(mappedBy = "productOwner", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST )
-  private List<StoreStock> stockByStore;
+  private String userName;
+  private Date createdDate;
+
+  @OneToMany(mappedBy = "userOwner", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST )
+  private List<ProductOrder> requestOrders;
 
 }
