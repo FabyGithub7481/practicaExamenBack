@@ -2,10 +2,7 @@ package com.pichincha.prueba.demo.dto;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Data
@@ -16,10 +13,7 @@ import lombok.experimental.FieldDefaults;
 public class StoreStockDto {
 
   Long id;
-
   Double soldPrice;
-
   ProductDto productOwner;
-
   Integer stock;
 }

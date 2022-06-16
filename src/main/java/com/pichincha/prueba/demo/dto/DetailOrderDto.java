@@ -2,11 +2,9 @@ package com.pichincha.prueba.demo.dto;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+
 
 @Data
 @Builder
@@ -16,10 +14,8 @@ import lombok.experimental.FieldDefaults;
 public class DetailOrderDto {
 
   Long id;
-
   ProductDto productOwner;
   ProductOrderDto orderOwner;
-
   Integer totalOdered;
   Double priceUnit;
   Double priceTotal;
